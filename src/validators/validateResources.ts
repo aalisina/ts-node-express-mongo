@@ -4,4 +4,17 @@ import { AnyZodObject } from "zod";
 // Currying is using a function to return another function
 const validate =
   (schema: AnyZodObject) =>
-  (req: Request, res: Response, next: NextFunction) => {};
+  (req: Request, res: Response, next: NextFunction) => {
+    try {
+      // allows us to create schemas to validate the body, query and params of requests
+      schema.parse({
+        body: req.body,
+        query: req.query,
+        params: req.params,
+      });
+    } catch (e: any) {
+      return res.status(400).send(e.error);
+    }
+  };
+
+export default validate;
