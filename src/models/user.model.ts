@@ -45,7 +45,14 @@ userSchema.pre("save", async function (next) {
   }
   // When the pwd is being modified
   // Create a salt
-  const salt = await bcrypt.genSalt();
+  const salt = await bcrypt.genSalt(config.get<number>("saltWorkFactor"));
+
+  // Create a hash of the user's pwd
+  const hash = bcrypt.hashSync(user.password, salt);
+
+  // Replace the pwd with the hash
+  user.password = hash;
+  return next();
 });
 
 const UserModel = mongoose.model("User", userSchema);
