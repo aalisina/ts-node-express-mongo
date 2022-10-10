@@ -6,7 +6,7 @@ const log = logger({
   // prettyPrint: true,
   base: {
     // process id
-    pid: false,
+    // pid: false,
   },
   timestamp: () => `,"time": ${dayjs().format()}`,
 });
