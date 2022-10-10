@@ -2,7 +2,8 @@ import logger from "pino";
 import dayjs from "dayjs";
 
 const log = logger({
-  prettyPrint: true,
+  // prettyPrint is depricated
+  // prettyPrint: true,
   base: {
     // process id
     pid: false,
