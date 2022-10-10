@@ -35,6 +35,19 @@ const userSchema = new mongoose.Schema(
   }
 );
 
+// Add a presave hook to the userSchema
+userSchema.pre("save", async function (next) {
+  let user = this as UserDocument;
+
+  // When user's pwd is not being modified return next
+  if (!user.isModified("password")) {
+    return next();
+  }
+  // When the pwd is being modified
+  // Create a salt
+  const salt = await bcrypt.genSalt();
+});
+
 const UserModel = mongoose.model("User", userSchema);
 
 export default UserModel;
