@@ -3,6 +3,16 @@ import bcrypt from "bcrypt";
 import config from "config";
 import { string } from "zod";
 
+// In the mongoose documentation it is recommended not to extend mongoose.Document
+// Many ways to integrate mongoose with TS, e.g. typegoose
+export interface UserDocument extends mongoose.Document {
+  email: string;
+  name: string;
+  password: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
 const userSchema = new mongoose.Schema(
   {
     email: {
