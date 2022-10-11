@@ -2,7 +2,7 @@ import { DocumentDefinition } from "mongoose";
 import UserModel, { UserDocument } from "../models/user.model";
 
 export async function createUserService(
-  input: DocumentDefinition<UserDocument>
+  input: DocumentDefinition<Omit<UserDocument, "createdAt" | "updatedAt">>
 ) {
   try {
     return await UserModel.create(input);
