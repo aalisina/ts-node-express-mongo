@@ -7,6 +7,8 @@ import routes from "./routes";
 const PORT = config.get<number>("port");
 const app = express();
 
+app.use(express.json());
+
 app.listen(PORT, async () => {
   logger.info("App esta corriendo");
   await dbConnection();
