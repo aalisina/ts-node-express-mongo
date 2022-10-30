@@ -2,4 +2,14 @@ export default {
   port: 1337,
   dbUri: "mongodb://localhost:27017/rest-api-tutorial",
   saltWorkFactor: 10,
+  publicKey: `eyJpc3N1ZXIiOiJZekV6TUdkb01ISm5PSEJpT0cxaWJEaHlOVEE9Iiwic3ViamVjdCI6Ill6RXpN
+  R2RvTUhKbk9IQmlPRzFpYkRoeU5UQT0iLCJzY29wZSI6ImludHJvc2NwZWN0X3Rva2VucywgcmV2
+  b2tlX3Rva2VucyIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0Ojg0NDMve3RpZH0ve2FpZH0vb2F1
+  dGgyL2F1dGhvcml6ZSIsImp3dElawerdwqewEIjoiMTUxNjIzOTAyMiIsImV4cGlyYXRpb25UaW1lIjoiMjAy
+  MS0wNS0xN1QwNzowOTo0OC4wMDArMDU0NSJ9`,
+  privateKey: `eyJpc3N1ZXIiOiJZekV6TUdkb01ISm5PSEJpT0cxaWJEaHlOVEE9Iiwic3ViamVjdCI6Ill6RXpN
+  R2RvTUhKbk9IQmlPRzFpYkRoeU5UQTeasfrarwefadadssdewe0iLCJzY29fwZSI6ImludHJvc2NwZWN0X3Rva2VucywgcmV2
+  b2tlX3Rva2VucyIsImF1ZsasCI6Imh0dHBzOfi8vbG9jYWxob3N0Ojg0NDMve3RpZH0ve2FpZH0vb2F1
+  dGgyL2F1dGhvcml6ZSIsImp3dElEIjoiMTUxNjIzOTAyMiIsImV4cGlyYXRpb25UaW1lIjoiMjAy
+  MS0wNS0xN1QwNzowOTo0OC4wMDArMDU0NSJ9`,
 };
