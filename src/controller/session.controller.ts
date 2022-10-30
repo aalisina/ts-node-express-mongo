@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { createSession } from "../services/session.service";
-import { validatePassword } from "../utils/validatePassword";
+import { validatePassword } from "../services/validatePassword";
 
 export async function createUserSessionHandler(req: Request, res: Response) {
   // Validate the user's pwd
