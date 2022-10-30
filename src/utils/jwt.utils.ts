@@ -4,7 +4,7 @@ import config from "config";
 const privateKey = config.get<string>("privateKey");
 const publicKey = config.get<string>("publicKey");
 
-function signJwt(object: Object, options?: jwt.SignOptions | undefined) {
+export function signJwt(object: Object, options?: jwt.SignOptions | undefined) {
   jwt.sign(object, privateKey, {
     // check that option is defined before we spread it, we can do that by && options
     ...(options && options),
@@ -12,4 +12,19 @@ function signJwt(object: Object, options?: jwt.SignOptions | undefined) {
   });
 }
 
-function verifyJwt() {}
+export function verifyJwt(token: string) {
+  try {
+    const decoded = jwt.verify(token, publicKey);
+    return {
+      valid: true,
+      expired: false,
+      decoded,
+    };
+  } catch (e: any) {
+    return {
+      valid: false,
+      expired: e.message === "jwt expired",
+      decoded: null,
+    };
+  }
+}
