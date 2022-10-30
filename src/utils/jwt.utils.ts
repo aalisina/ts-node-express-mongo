@@ -6,7 +6,8 @@ const publicKey = config.get<string>("publicKey");
 
 function signJwt(object: Object, options?: jwt.SignOptions | undefined) {
   jwt.sign(object, privateKey, {
-    ...options,
+    // check that option is defined before we spread it, we can do that by && options
+    ...(options && options),
     algorithm: "RS256",
   });
 }
