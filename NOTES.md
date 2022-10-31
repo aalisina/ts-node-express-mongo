@@ -2,4 +2,4 @@ yarn add express zod config cors express mongoose pino pino-pretty dayjs bcrypt 
 
 yarn add @types/body-parser @types/config @types/cors @types/express @types/node @types/pino @types/bcrypt @types/jsonwebtoken @types/lodash @types/nanoid ts-node-dev typescript -D
 
-Left off at 53:00
+Left off at 1:08
