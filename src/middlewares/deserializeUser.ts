@@ -12,6 +12,8 @@ export const deserializeUser = (
     /^Bearer\s/,
     ""
   );
+  const refreshToken = get(req, "headers.x-refresh");
+
   if (!accessToken) {
     return next();
   }
@@ -20,5 +22,10 @@ export const deserializeUser = (
     res.locals.user = decoded;
     return next();
   }
+
+  if (expired && refreshToken) {
+    // when expired a new access token will be issued
+  }
+
   return next();
 };
