@@ -4,6 +4,7 @@ import SessionModel, {
   SchemaDocument as SessionDocument,
 } from "../models/session.model";
 import { verifyJwt } from "../utils/jwt.utils";
+import { findUser } from "./user.service";
 
 export async function createSession(userId: string, userAgent: string) {
   const session = await SessionModel.create({
@@ -37,5 +38,7 @@ export async function reIssueAccessToken({
 
   if (!session || !session.valid) return false;
 
-  const user = await findUser;
+  const user = await findUser({ _id: session.user });
+
+  if (!user) return false;
 }
