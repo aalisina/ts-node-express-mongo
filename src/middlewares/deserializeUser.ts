@@ -2,8 +2,9 @@ import { get } from "lodash";
 import { verifyJwt } from "../utils/jwt.utils";
 
 import { NextFunction, Request, Response } from "express";
+import { reIssueAccessToken } from "../services/session.service";
 
-export const deserializeUser = (
+export const deserializeUser = async (
   req: Request,
   res: Response,
   next: NextFunction
@@ -25,6 +26,14 @@ export const deserializeUser = (
 
   if (expired && refreshToken) {
     // when expired a new access token will be issued
+    const newAccessToken = await reIssueAccessToken({ refreshToken });
+    if (newAccessToken) {
+      res.setHeader("x-access-token", newAccessToken);
+    }
+
+    const result = verifyJwt(newAccessToken);
+    res.locals.user = result.decoded;
+    return next();
   }
 
   return next();
