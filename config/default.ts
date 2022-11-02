@@ -12,4 +12,6 @@ export default {
   b2tlX3Rva2VucyIsImF1ZsasCI6Imh0dHBzOfi8vbG9jYWxob3N0Ojg0NDMve3RpZH0ve2FpZH0vb2F1
   dGgyL2F1dGhvcml6ZSIsImp3dElEIjoiMTUxNjIzOTAyMiIsImV4cGlyYXRpb25UaW1lIjoiMjAy
   MS0wNS0xN1QwNzowOTo0OC4wMDArMDU0NSJ9`,
+  accessTokenTtl: "15m",
+  refreshTokenTtl: "1y",
 };
