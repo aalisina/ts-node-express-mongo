@@ -3,7 +3,7 @@ import config from "config";
 import dbConnection from "./utils/dbConnection";
 import logger from "./utils/logger";
 import routes from "./routes";
-import deserializeUser from "./middlewares/deserializeUser";
+import { deserializeUser } from "./middlewares/deserializeUser";
 
 const PORT = config.get<number>("port");
 const app = express();
