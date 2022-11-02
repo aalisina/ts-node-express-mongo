@@ -3,7 +3,11 @@ import { verifyJwt } from "../utils/jwt.utils";
 
 import { NextFunction, Request, Response } from "express";
 
-export const deserializeUser = (req: Request, res: Response, next: NextFunction) => {
+export const deserializeUser = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   const accessToken = get(req, "headers.authorization", "").replace(
     /^Bearer\s/,
     ""
@@ -16,4 +20,5 @@ export const deserializeUser = (req: Request, res: Response, next: NextFunction)
     res.locals.user = decoded;
     return next();
   }
+  return next();
 };
