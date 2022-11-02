@@ -35,7 +35,7 @@ export async function reIssueAccessToken({
 
   if (!decoded || !get(decoded, "_id")) return false;
 
-  const session = await SessionModel.findById(get(decoded, "_id"));
+  const session = await SessionModel.findById(get(decoded, "session"));
 
   if (!session || !session.valid) return false;
 
