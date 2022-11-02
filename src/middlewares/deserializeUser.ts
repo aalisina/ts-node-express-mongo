@@ -3,7 +3,7 @@ import { verifyJwt } from "../utils/jwt.utils";
 
 import { NextFunction, Request, Response } from "express";
 
-const deserializeUser = (req: Request, res: Response, next: NextFunction) => {
+export const deserializeUser = (req: Request, res: Response, next: NextFunction) => {
   const accessToken = get(req, "headers.authorization", "").replace(
     /^Bearer\s/,
     ""
