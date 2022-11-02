@@ -1,4 +1,4 @@
-import { DocumentDefinition } from "mongoose";
+import { DocumentDefinition, FilterQuery } from "mongoose";
 import UserModel, { UserDocument } from "../models/user.model";
 
 export async function createUserService(
@@ -11,4 +11,9 @@ export async function createUserService(
   } catch (error: any) {
     throw new Error(error);
   }
+}
+
+export async function findUser(query: FilterQuery<UserDocument>) {
+  const user = await UserModel.findOne(query).lean();
+  return user;
 }
