@@ -3,8 +3,9 @@ import { get } from "lodash";
 import SessionModel, {
   SchemaDocument as SessionDocument,
 } from "../models/session.model";
-import { verifyJwt } from "../utils/jwt.utils";
+import { signJwt, verifyJwt } from "../utils/jwt.utils";
 import { findUser } from "./user.service";
+import config from "config";
 
 export async function createSession(userId: string, userAgent: string) {
   const session = await SessionModel.create({
@@ -41,4 +42,14 @@ export async function reIssueAccessToken({
   const user = await findUser({ _id: session.user });
 
   if (!user) return false;
+
+  // if there is a user we can issue a new access token
+  const accessToken = signJwt(
+    {
+      ...user,
+      session: session._id,
+    },
+    { expiresIn: config.get("accessTokenTtl") }
+  );
+  return accessToken;
 }
