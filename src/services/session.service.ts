@@ -1,4 +1,4 @@
-import { FilterQuery } from "mongoose";
+import { FilterQuery, UpdateQuery } from "mongoose";
 import SessionModel, {
   SchemaDocument as SessionDocument,
 } from "../models/session.model";
@@ -14,4 +14,10 @@ export async function findSessions(query: FilterQuery<SessionDocument>) {
   // .lean() means that it's not going to return all the functions
   // it will return the plain object, same as toJson
   return SessionModel.find(query).lean();
+}
+export async function updateSession(
+  query: FilterQuery<SessionDocument>,
+  update: UpdateQuery<SessionDocument>
+) {
+  return SessionModel.updateOne(query, update);
 }
