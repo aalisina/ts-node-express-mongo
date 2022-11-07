@@ -45,17 +45,17 @@ function routes(app: Express) {
     createProductHandler
   );
   app.put(
-    "/api/products",
+    "/api/products/:productId",
     [requireUser, validateResource(updateProductSchema)],
     updateProductHandler
   );
   app.get(
-    "/api/products",
+    "/api/products/:productId",
     validateResource(getProductSchema),
     getProductHandler
   );
   app.delete(
-    "/api/products",
+    "/api/products/:productId",
     [requireUser, validateResource(deleteProductSchema)],
     deleteProductHandler
   );
