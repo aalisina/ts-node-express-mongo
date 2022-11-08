@@ -24,7 +24,7 @@ export async function createProductHandler(
   });
   return res.send(product);
 }
- // todo: add a try catch block
+// todo: add a try catch block
 export async function getProductHandler(
   req: Request<GetProductInput["params"]>,
   res: Response
@@ -36,7 +36,7 @@ export async function getProductHandler(
   }
   return res.send(product);
 }
- // todo: add a try catch block
+// todo: add a try catch block
 export async function updateProductHandler(
   req: Request<UpdateProductInput["params"]>,
   res: Response
@@ -49,7 +49,7 @@ export async function updateProductHandler(
   if (!product) {
     return res.sendStatus(404);
   }
-  if (product.user !== userId) {
+  if (String(product.user) !== userId) {
     return res.sendStatus(403);
   }
   const updatedProduct = await findAndUpdateProduct({ productId }, update, {
@@ -57,7 +57,7 @@ export async function updateProductHandler(
   });
   return res.send(updatedProduct);
 }
- // todo: add a try catch block
+// todo: add a try catch block
 export async function deleteProductHandler(
   req: Request<DeleteProductInput["params"]>,
   res: Response
@@ -70,7 +70,7 @@ export async function deleteProductHandler(
   if (!product) {
     return res.sendStatus(404);
   }
-  if (product.user !== userId) {
+  if (String(product.user) !== userId) {
     return res.sendStatus(403);
   }
   await deleteProduct({ productId });
